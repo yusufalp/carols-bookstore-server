@@ -1,4 +1,4 @@
-const crypto = require('crypto');
+const bcrypt = require('bcrypt');
 
 const User = require('../models/userModel');
 
@@ -22,10 +22,9 @@ const logoutRequest = (req, res, next) => {
 };
 
 const signupRequest = (req, res, next) => { //signupRequest
-  const salt = crypto.randomBytes(16);
-  const { firstName, lastName, username, password, strategy } = req.body;
+  const { firstName, lastName, username, password } = req.body;
   // encrypt the password and create a new User object with the hashed password
-  crypto.pbkdf2(password, salt, 310000, 32, 'sha256', async (error, hashedPassword) => {
+  bcrypt.hash(password, 10, async (error, hashedPassword) => {
     if (error) {
       return next(error);
     }
@@ -33,9 +32,7 @@ const signupRequest = (req, res, next) => { //signupRequest
       firstName,
       lastName,
       username,
-      password: hashedPassword,
-      salt,
-      strategy
+      password: hashedPassword
     });
 
     try {

@@ -1,5 +1,5 @@
 const passport = require('passport');
-const crypto = require('crypto');
+const bcrypt = require('bcrypt');
 const LocalStrategy = require('passport-local').Strategy;
 // const GithubStrategy = require('passport-github').Strategy;
 // const GoogleStrategy = require('passport-google-oauth20').Strategy;
@@ -13,12 +13,10 @@ passport.use(new LocalStrategy(function verify(username, password, done) {
       if (!user) {
         return done(null, false, { message: 'User not found.' });
       }
-      crypto.pbkdf2(password, user.salt, 310000, 32, 'sha256', (error, hashedPassword) => {
+      bcrypt.compare(password, user.password, (error, result) => {
+        console.log("result", result);
         if (error) {
           return done(error);
-        }
-        if (!crypto.timingSafeEqual(user.password, hashedPassword)) {
-          return done(null, false, { message: 'Incorrect username or password.' });
         }
         return done(null, user);
       });
