@@ -3,11 +3,13 @@ require('./config/connection');
 require('./config/authStrategy');
 
 const express = require('express');
+const path = require('path');
+
 const morgan = require('morgan');
 const helmet = require('helmet');
-const path = require('path');
-const passport = require('passport');
 const cors = require('cors');
+
+const passport = require('passport');
 
 const session = require('express-session');
 
@@ -16,9 +18,6 @@ const authRoutes = require('./routes/authRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname + '/views'));
 
 app.use(helmet({ contentSecurityPolicy: false }));
 app.use(morgan('dev'));
