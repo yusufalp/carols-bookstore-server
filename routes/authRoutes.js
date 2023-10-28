@@ -1,21 +1,37 @@
-const express = require('express');
-const passport = require('passport');
+const express = require("express");
+const passport = require("passport");
 
-const { loginLocalFailed, logoutRequest, signupRequest } = require('../controllers/authController');
+const {
+  loginLocalFailed,
+  logoutRequest,
+  signupRequest,
+} = require("../controllers/authController");
 
 const router = express.Router();
 
-router.post('/login/local', passport.authenticate('local', { failureRedirect: '/login/local/failed' }), (req, res, next) => {
-  res
-    .status(200)
-    .json({ success: { message: "User logged in." }, data: { username: req.user.username, firstName: req.user.firstName, lastName: req.user.lastName }, statusCode: 200 });
-});
+router.post(
+  "/login/local",
+  passport.authenticate("local", { failureRedirect: "/login/local/failed" }),
+  (req, res, next) => {
+    res
+      .status(200)
+      .json({
+        success: { message: "User logged in." },
+        data: {
+          username: req.user.username,
+          firstName: req.user.firstName,
+          lastName: req.user.lastName,
+        },
+        statusCode: 200,
+      });
+  }
+);
 
-router.get('/login/local/failed', loginLocalFailed);
+router.get("/login/local/failed", loginLocalFailed);
 
-router.get('/logout', logoutRequest);
+router.get("/logout", logoutRequest);
 
-router.post('/signup', signupRequest);
+router.post("/signup", signupRequest);
 
 // // github strategy
 // router.get('/login/github', passport.authenticate('github'));
