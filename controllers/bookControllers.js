@@ -2,13 +2,12 @@ const Book = require("../models/bookModel");
 
 const getAllBooks = async (req, res, next) => {
   try {
-    await Book.find({}).then((books) =>
-      res.status(200).json({
-        success: { message: "Found all books!" },
-        data: books,
-        statusCode: 200,
-      })
-    );
+    const books = await Book.find({});
+    res.status(200).json({
+      success: { message: "Found all books!" },
+      data: books,
+      statusCode: 200,
+    });
   } catch (err) {
     res.status(400).json({
       error: { message: "Something went wrong getting all books!" },
@@ -20,12 +19,11 @@ const getAllBooks = async (req, res, next) => {
 const getBook = async (req, res, next) => {
   const { id } = req.params;
   try {
-    await Book.findOne({ _id: id }).then((foundBook) => {
-      res.status(200).json({
-        success: { message: "Found the book!" },
-        data: foundBook,
-        statusCode: 200,
-      });
+    const foundBook = await Book.find({ _id: id });
+    res.status(200).json({
+      success: { message: "Found the book!" },
+      data: foundBook,
+      statusCode: 200,
     });
   } catch (err) {
     res.status(400).json({
