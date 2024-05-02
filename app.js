@@ -41,5 +41,9 @@ app.use(passport.session());
 app.use("/api/books", booksRoutes);
 app.use("/", authRoutes);
 
+app.get("/", (req, res, next) => {
+  res.send("Talking to you from Netlify")
+})
+
 app.listen(PORT);
 console.log(`The server is listening on port ${PORT}`);
