@@ -42,21 +42,7 @@ app.use("/api/books", booksRoutes);
 app.use("/", authRoutes);
 
 app.get("/", (request, response, next) => {
-  response.send(
-    `
-      <!DOCTYPE html>
-      <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Document</title>
-        </head>
-        <body>
-            <p>Netlify testing</p>
-        </body>
-      </html>
-    `
-  );
+  response.json({ success: { message: "Index page works on Netlify" } });
 });
 
 app.listen(PORT);
