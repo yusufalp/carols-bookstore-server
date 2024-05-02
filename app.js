@@ -5,6 +5,8 @@ require("./config/authStrategy");
 const express = require("express");
 const path = require("path");
 
+import serverless from "serverless-http";
+
 const morgan = require("morgan");
 const helmet = require("helmet");
 const cors = require("cors");
@@ -47,3 +49,5 @@ app.get("/", (request, response, next) => {
 
 app.listen(PORT);
 console.log(`The server is listening on port ${PORT}`);
+
+export const handler = serverless(app);

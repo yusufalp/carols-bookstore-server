@@ -1,10 +1,8 @@
+[functions]
+  external_node_modules = ["express"]
+  node_bundler = "esbuild"
 [[redirects]]
-  from = "http://localhost:3000/"
-  to = "https://codesquad-comics-server.netlify.app"
-  status = 200
   force = true
-  headers = {X-From = "Netlify"}
-[[headers]]
-  for = "/*"
-  [headers.values]
-    Access-Control-Allow-Origin = "*"
+  from = "/api/*"
+  status = 200
+  to = "/.netlify/functions/api/:splat"
