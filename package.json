@@ -8,14 +8,11 @@
     "helmet": "^7.0.0",
     "mongoose": "^7.3.1",
     "morgan": "^1.10.0",
-    "netlify-cli": "^17.23.1",
-    "netlify-lambda": "^2.0.16",
     "nodemon": "^2.0.22",
     "passport": "^0.6.0",
     "passport-github": "^1.1.0",
     "passport-google-oauth20": "^2.0.0",
-    "passport-local": "^1.0.0",
-    "serverless-http": "^3.2.0"
+    "passport-local": "^1.0.0"
   },
   "name": "carols-bookstore-server",
   "version": "1.0.0",
