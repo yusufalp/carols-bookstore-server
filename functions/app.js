@@ -1,6 +1,6 @@
 require("dotenv").config();
-require("./config/connection");
-require("./config/authStrategy");
+require("../config/connection");
+require("../config/authStrategy");
 
 const express = require("express");
 const path = require("path");
@@ -13,8 +13,8 @@ const passport = require("passport");
 
 const session = require("express-session");
 
-const booksRoutes = require("./routes/booksRoutes");
-const authRoutes = require("./routes/authRoutes");
+const booksRoutes = require("../routes/booksRoutes");
+const authRoutes = require("../routes/authRoutes");
 
 const app = express();
 const PORT = process.env.PORT || 8080;
