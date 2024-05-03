@@ -14,5 +14,17 @@
     "passport-google-oauth20": "^2.0.0",
     "passport-local": "^1.0.0",
     "serverless-http": "^3.2.0"
-  }
+  },
+  "name": "carols-bookstore-server",
+  "version": "1.0.0",
+  "main": "app.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
