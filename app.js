@@ -42,7 +42,7 @@ app.use("/api/books", booksRoutes);
 app.use("/", authRoutes);
 
 app.get("/", (request, response, next) => {
-  response.json({ success: { message: "Index page works on Netlify" } });
+  response.json({ success: { message: "Index page works after deployment" } });
 });
 
 app.listen(PORT);
